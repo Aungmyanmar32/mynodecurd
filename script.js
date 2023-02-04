@@ -40,10 +40,9 @@ const popUp = (divName) => {
     divName.classList.add("closed");
   }
 };
-
+const url = "https://amrcurd233.onrender.com/allUsers";
 //Get user data from server
 const getUsersFromServer = async () => {
-  const url = "https://amrcurd233.onrender.com/allUsers";
   const response = await fetch(url);
   const data = await response.json();
   for (let i = 0; i < data.length; i++) {
@@ -90,7 +89,7 @@ const registerNewUser = async () => {
   //check name and email is not empty
   if (newUserName || newUserEmail) {
     //Post data to server
-    const response = await fetch("http://localhost:3000/allUsers", {
+    const response = await fetch(url, {
       method: "POST",
       body: JSON.stringify(newUserobject),
     });
@@ -131,7 +130,7 @@ const uiDisplayer = async (method) => {
     name: editUserNameInput.value,
     email: editUserEmailInput.value,
   };
-  const response = await fetch("http://localhost:3000/allUsers", {
+  const response = await fetch(url, {
     method: method,
     body: JSON.stringify(newUserobject),
   });
